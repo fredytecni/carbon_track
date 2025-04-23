@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CarbonTrack - Inicio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+                <a class="navbar-brand" href="#">
+                    <img src="img/logo.jpeg" alt="CarbonTrack Logo" height="50">
+                    CarbonTrack
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="index.html">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="registro.html">Registro</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="ingreso-datos.html">Ingreso de Datos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="reportes.html">Reportes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contacto.html">Contacto</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="login.html">Login</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mt-5">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <h2>Iniciar Sesión</h2>
+                <div id="error-container" class="mb-3"></div>  <form>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Correo Electrónico:</label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Contraseña:</label>
+                        <input type="password" class="form-control" id="password" name="password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-light text-center py-3">
+        <p>
+            Este sitio web utiliza cookies para proporcionar la funcionalidad necesaria y mejorar su experiencia.
+            <a href="#">Aceptar</a> | <a href="#">Rechazar</a>
+        </p>
+    </footer>
+
+    <script>
+        const form = document.querySelector('form');
+        const emailInput = document.getElementById('email');
+        const passwordInput = document.getElementById('password');
+        const errorContainer = document.getElementById('error-container');
+
+        form.addEventListener('submit', (event) => {
+            let errores = [];
+            errorContainer.innerHTML = ''; // Limpiar mensajes de error previos
+
+            if (emailInput.value.trim() === '') {
+                errores.push('El correo electrónico es obligatorio.');
+            }
+
+            if (passwordInput.value.trim() === '') {
+                errores.push('La contraseña es obligatoria.');
+            }
+
+            if (errores.length > 0) {
+                event.preventDefault();
+                mostrarErrores(errores);
+            }
+        });
+
+        function mostrarErrores(errores) {
+            errorContainer.innerHTML = errores.map(error => `<p class="text-danger">${error}</p>`).join('');
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

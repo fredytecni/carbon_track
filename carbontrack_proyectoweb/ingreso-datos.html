@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CarbonTrack - Ingreso de Datos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="estilos/styles.css">
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+                <a class="navbar-brand" href="#">
+                    <img src="img/logo.jpeg" alt="CarbonTrack Logo" height="50">
+                    CarbonTrack
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="registro.html">Registro</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="ingreso-datos.html">Ingreso de Datos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="reportes.html">Reportes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contacto.html">Contacto</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="login.html">Login</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mt-5">
+        <h1>Ingreso de Datos de Emisiones</h1>
+        <p>Aquí podrás registrar las emisiones por categoría, alcance y fuente.</p>
+
+        <ul class="nav nav-tabs" id="emissionTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="general-tab" data-bs-toggle="tab" data-bs-target="#general"
+                    type="button" role="tab" aria-controls="general" aria-selected="true">Datos Generales</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="fuente-tab" data-bs-toggle="tab" data-bs-target="#fuente" type="button"
+                    role="tab" aria-controls="fuente" aria-selected="false">Emisiones por Fuente</button>
+            </li>
+        </ul>
+
+        <div class="tab-content mt-4" id="emissionTabsContent">
+            <div class="tab-pane fade show active" id="general" role="tabpanel" aria-labelledby="general-tab">
+                <form id="general-form">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group mb-3">
+                                <label for="categoria" class="form-label">Categoría de Emisión:</label>
+                                <select class="form-select" id="categoria" name="categoria" required>
+                                    <option value="">Seleccionar Categoría</option>
+                                    <option value="transporte">Transporte</option>
+                                    <option value="electrico">Consumo Eléctrico</option>
+                                    <option value="combustion_fija">Combustión Fija</option>
+                                    <option value="procesos_industriales">Procesos Industriales</option>
+                                    <option value="agricultura">Agricultura</option>
+                                    </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group mb-3">
+                                <label for="alcance" class="form-label">Alcance:</label>
+                                <select class="form-select" id="alcance" name="alcance" required>
+                                    <option value="">Seleccionar Alcance</option>
+                                    <option value="alcance1">Alcance 1</option>
+                                    <option value="alcance2">Alcance 2</option>
+                                    <option value="alcance3">Alcance 3</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group mb-3">
+                                <label for="fecha" class="form-label">Fecha de Registro:</label>
+                                <input type="date" class="form-control" id="fecha" name="fecha" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group mb-3">
+                                <label for="unidad_medida" class="form-label">Unidad de Medida:</label>
+                                <select class="form-select" id="unidad_medida" name="unidad_medida" required>
+                                    <option value="">Seleccionar Unidad</option>
+                                    <option value="kg_co2e">kg CO2e</option>
+                                    <option value="toneladas_co2e">Toneladas CO2e</option>
+                                    <option value="litros">Litros</option>
+                                    <option value="kwh">kWh</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group mb-3">
+                                <label for="fuente_general" class="form-label">Fuente (General):</label>
+                                <input type="text" class="form-control" id="fuente_general" name="fuente_general">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group mb-3">
+                                <label for="observaciones" class="form-label">Observaciones:</label>
+                                <textarea class="form-control" id="observaciones" name="observaciones" rows="3"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="tab-pane fade" id="fuente" role="tabpanel" aria-labelledby="fuente-tab">
+                <form id="fuente-form">
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="fuente1" class="form-label">Fuente 1:</label>
+                            <input type="text" class="form-control" id="fuente1" name="fuente1">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="cantidad1" class="form-label">Cantidad 1:</label>
+                            <input type="number" class="form-control" id="cantidad1" name="cantidad1">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="fuente2" class="form-label">Fuente 2:</label>
+                            <input type="text" class="form-control" id="fuente2" name="fuente2">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="cantidad2" class="form-label">Cantidad 2:</label>
+                            <input type="number" class="form-control" id="cantidad2" name="cantidad2">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="fuente3" class="form-label">Fuente 3:</label>
+                            <input type="text" class="form-control" id="fuente3" name="fuente3">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="cantidad3" class="form-label">Cantidad 3:</label>
+                            <input type="number" class="form-control" id="cantidad3" name="cantidad3">
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-outline-secondary btn-sm">Añadir Fuente</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="mt-4">
+            <button type="submit" class="btn btn-primary">Guardar Registro</button>
+            <button type="reset" class="btn btn-secondary ms-2">Cancelar</button>
+        </div>
+    </main>
+
+    <footer class="bg-light text-center py-3">
+        <p>
+            Este sitio web utiliza cookies para proporcionar la funcionalidad necesaria y mejorar su experiencia.
+            <a href="#">Aceptar</a> | <a href="#">Rechazar</a>
+        </p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

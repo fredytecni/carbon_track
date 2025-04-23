@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CarbonTrack</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="estilos/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        </nav>
+    </header>
+
+    <main class="container mt-5">
+        <section class="row mb-5">
+            <div class="col-md-8 offset-md-2 text-center">
+                <h1>Bienvenido a CarbonTrack</h1>
+                <p class="lead">Software de mediciones del carbono para ayudar a las empresas a medir, gestionar y reducir su huella de carbono.</p>
+                <div class="mt-3">
+                    <a href="registro.html" class="btn btn-primary btn-lg me-2">Regístrate</a>
+                    <a href="login.html" class="btn btn-secondary btn-lg">Inicia Sesión</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="row mt-5 mb-5">
+            <div class="col-md-10 offset-md-1">
+                <h2>¿Qué hace CarbonTrack?</h2>
+                <p>CarbonTrack permite registrar emisiones por categoría, alcance y fuente, calcular la huella de carbono total, generar reportes personalizados y comparar datos históricos.</p>
+            </div>
+        </section>
+
+        <section class="row mt-5 mb-5 impact-section-row">
+            <div class="col-md-6 mb-4 mb-md-0">
+                <canvas id="emissionOverviewChart"></canvas>
+                <p class="mt-2">Distribución de Emisiones (simulado)</p>
+            </div>
+            <div class="col-md-6">
+                <canvas id="emissionTrendChart"></canvas>
+                <p class="mt-2">Tendencia de Emisiones (simulado)</p>
+            </div>
+        </section>
+
+        <section class="row mt-5 mb-5">
+            <div class="col-md-10 offset-md-1 text-center">
+                <h2>Nuestro Impacto</h2>
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <canvas id="emissionBySectorChart" width="400" height="300"></canvas>
+                        <p class="mt-2">Emisiones por Sector (simulado)</p>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <canvas id="reductionGoalChart" width="400" height="300"></canvas>
+                        <p class="mt-2">Progreso hacia Objetivo de Reducción (simulado)</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <canvas id="userGrowthChart" width="400" height="300"></canvas>
+                        <p class="mt-2">Crecimiento de Usuarios (simulado)</p>
+                    </div>
+                    <div class="col-md-6 text-center">
+                        <h3 class="mb-3"><i class="fas fa-globe-americas fa-2x text-success"></i> Impacto Agregado</h3>
+                        <p class="lead"><span class="fw-bold">1,250</span> Toneladas de CO2e Reducidas (Simulado)</p>
+                        <p class="text-muted">Gracias a la acción colectiva de nuestros usuarios.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="row mt-5 mb-5">
+            <div class="col-md-10 offset-md-1">
+                <h2>Beneficios Clave de CarbonTrack</h2>
+                <ul class="row">
+                    <li class="col-md-4 text-center mb-3">
+                        <i class="fas fa-chart-bar fa-3x text-primary"></i>
+                        <h4 class="mt-2">Reportes Detallados</h4>
+                        <p>Obtén información clara y precisa sobre tus emisiones.</p>
+                    </li>
+                    <li class="col-md-4 text-center mb-3">
+                        <i class="fas fa-lightbulb fa-3x text-success"></i>
+                        <h4 class="mt-2">Identifica Oportunidades</h4>
+                        <p>Descubre áreas clave para la reducción de tu huella.</p>
+                    </li>
+                    <li class="col-md-4 text-center mb-3">
+                        <i class="fas fa-leaf fa-3x text-warning"></i>
+                        <h4 class="mt-2">Sostenibilidad</h4>
+                        <p>Contribuye a un futuro más verde y responsable.</p>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="row mt-5 mb-5">
+            <div class="col-md-10 offset-md-1">
+                <h2>Acerca de CarbonTrack</h2>
+                <p>CarbonTrack es una iniciativa comprometida con la transparencia y la acción climática. Creemos que al proporcionar herramientas accesibles y fáciles de usar para la medición y gestión de emisiones, podemos fomentar un cambio significativo en la forma en que las empresas abordan su impacto ambiental.</p>
+                <p>Nuestro equipo está formado por expertos en sostenibilidad, tecnología y análisis de datos, dedicados a ofrecer una solución integral y confiable.</p>
+            </div>
+        </section>
+
+        <section class="row mt-5">
+            <div class="col-md-10 offset-md-1">
+                <p>Este sitio web utiliza cookies para proporcionar la funcionalidad necesaria y mejorar su experiencia. <a href="#">Aceptar</a> | <a href="#">Rechazar</a></p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-light text-center py-3">
+        <p>&copy; 2025 CarbonTrack proyecto web formativo investigadores Cielo Arandía y Fredy Prieto  </p>
+    </footer>
+
+    <script>
+        // Gráfico de pastel (Distribución de Emisiones)
+        const emissionOverviewCtx = document.getElementById('emissionOverviewChart').getContext('2d');
+        const emissionOverviewChart = new Chart(emissionOverviewCtx, {
+            type: 'pie',
+            data: {
+                labels: ['Transporte', 'Consumo Eléctrico', 'Otros'],
+                datasets: [{
+                    label: 'Distribución de Emisiones (simulado)',
+                    data: [40, 30, 30],
+                    backgroundColor: [
+                        'rgba(54, 162, 235, 0.8)',
+                        'rgba(255, 99, 132, 0.8)',
+                        'rgba(255, 206, 86, 0.8)'
+                    ],
+                    borderColor: [
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(255, 206, 86, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+            }
+        });
+
+        // Gráfico de barras (Tendencia de Emisiones - Simulado)
+        const emissionTrendCtx = document.getElementById('emissionTrendChart').getContext('2d');
+        const emissionTrendChart = new Chart(emissionTrendCtx, {
+            type: 'bar',
+            data: {
+                labels: ['2022', '2023', '2024', '2025 (Est.)'],
+                datasets: [{
+                    label: 'Emisiones Totales (Toneladas CO2e - Simulado)',
+                    data: [500, 480, 450, 430],
+                    backgroundColor: 'rgba(75, 192, 192, 0.8)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // Gráfico de barras horizontal (Emisiones por Sector - Simulado)
+        const emissionBySectorCtx = document.getElementById('emissionBySectorChart').getContext('2d');
+        const emissionBySectorChart = new Chart(emissionBySectorCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Manufactura', 'Transporte', 'Agricultura', 'Energía', 'Residencial'],
+                datasets: [{
+                    label: 'Emisiones (Millones de Toneladas CO2e - Simulado)',
+                    data: [150, 120, 90, 180, 60],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.8)',
+                        'rgba(54, 162, 235, 0.8)',
+                        'rgba(255, 206, 86, 0.8)',
+                        'rgba(75, 192, 192, 0.8)',
+                        'rgba(153, 102, 255, 0.8)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // Gráfico de líneas (Progreso hacia Objetivo de Reducción - Simulado)
+        const reductionGoalCtx = document.getElementById('reductionGoalChart').getContext('2d');
+        const reductionGoalChart = new Chart(reductionGoalCtx, {
+            type: 'line',
+            data: {
+                labels: ['2022', '2023', '2024', '2025', '2026'],
+                datasets: [{
+                    label: 'Objetivo de Reducción (Toneladas CO2e)',
+                    data: [500, 475, 450, 425, 400],
+                    borderColor: 'rgba(255, 206, 86, 1)',
+                    fill: false,
+                    tension: 0.1
+                }, {
+                    label: 'Emisiones Reales (Simulado)',
+                    data: [500, 485, 460, 440, 415],
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    fill: false,
+                    tension: 0.1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // Gráfico de líneas (Crecimiento de Usuarios - Simulado)
+        const userGrowthCtx = document.getElementById('userGrowthChart').getContext('2d');
+        const userGrowthChart = new Chart(userGrowthCtx, {
+            type: 'line',
+            data: {
+                labels: ['Ene', 'Mar', 'May', 'Jul', 'Sep', 'Nov'],
+                datasets: [{
+                    label: 'Número de Usuarios Registrados',
+                    data: [50, 80, 120, 180, 250, 320],
+                    borderColor: 'rgba(153, 102, 255, 1)',
+                    fill: true,
+                    backgroundColor: 'rgba(153, 102, 255, 0.2)',
+                    tension: 0.3
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
