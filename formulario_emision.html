@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Registrar Emisión - carbontrack</title>
+    <style>
+        /* Estilos básicos para el formulario carbontrack */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        form {
+            background-color: #ffffff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 500px;
+        }
+        p {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+        input[type="text"],
+        input[type="number"],
+        input[type="date"],
+        textarea {
+            width: calc(100% - 22px);
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        textarea {
+            resize: vertical;
+        }
+        input[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        small {
+            display: block;
+            margin-top: 3px;
+            font-size: 0.85em;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <h1>Registrar Nueva Emisión de Carbono</h1>
+
+    <form action="procesar_registro_emision.php" method="POST">
+
+        <p>
+            <label for="id_emision">ID de la Emisión (Ej: EMI001):</label><br>
+            <input type="text" id="id_emision" name="id_emision" required>
+            <small>(Debe ser un código único que tú inventes para esta emisión)</small>
+        </p>
+
+        <p>
+            <label for="fecha_emision">Fecha de la Emisión/Actividad:</label><br>
+            <input type="date" id="fecha_emision" name="fecha_emision" required>
+        </p>
+
+        <p>
+            <label for="cantidad_consumida">Cantidad Emitida/Consumida (Número entero):</label><br>
+            <input type="number" id="cantidad_consumida" name="cantidad_consumida" step="1" required>
+            <small>(Ej: 150. Si tu tabla `emision` tiene `cantidad` como DECIMAL(10,0))</small>
+        </p>
+
+        <p>
+            <label for="unidad_consumo">Unidad (Ej: kg, kWh, Litros):</label><br>
+            <input type="text" id="unidad_consumo" name="unidad_consumo" required>
+        </p>
+        
+        <p>
+            <label for="id_empresa">ID de la Empresa (Ej: EMP-001):</label><br>
+            <input type="text" id="id_empresa" name="id_empresa" required>
+            <small>(El código de la empresa que existe en tu tabla 'empresa')</small>
+        </p>
+
+        <p>
+            <label for="id_fuente_emision">ID de la Fuente de Emisión (Ej: FUE001):</label><br>
+            <input type="text" id="id_fuente_emision" name="id_fuente_emision" required>
+            <small>(El código de la fuente que existe en tu tabla 'fuente_emision')</small>
+        </p>
+
+        <p>
+            <label for="id_usuario_registra">ID del Usuario que Registra (Ej: USR-001):</label><br>
+            <input type="text" id="id_usuario_registra" name="id_usuario_registra" required>
+            <small>(El código del usuario que existe en tu tabla 'usuario')</small>
+        </p>
+        
+        <!-- Campos opcionales que no están en tu tabla 'emision' actual (según el último diagrama): -->
+        <!-- Si los necesitas, agrégalos primero a la tabla 'emision' en phpMyAdmin -->
+        <!--
+        <p>
+            <label for="co2e_calculado">CO2e Calculado (Opcional):</label><br>
+            <input type="number" id="co2e_calculado" name="co2e_calculado" step="0.01"><br><br>
+        </p>
+        <p>
+            <label for="notas">Notas Adicionales (Opcional):</label><br>
+            <textarea id="notas" name="notas" rows="3" cols="40"></textarea>
+        </p>
+        -->
+
+        <p>
+            <input type="submit" value="Guardar Registro de Emisión">
+        </p>
+
+    </form>
+</body>
+</html>
